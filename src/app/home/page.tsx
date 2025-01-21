@@ -1,6 +1,6 @@
 
-const Home = () => {
-  return (
+function Hello(){
+    return (
 <div className="bg-gradient-to-r from-blue-500 to-green-500 flex flex-col h-screen">
   <nav className="bg-white py-6 px-8 flex justify-between items-center">
     <a href="#" className="text-xl font-bold text-gray-800">Brand Name</a>
@@ -22,7 +22,8 @@ const Home = () => {
   </header>
 </div>
 
-  )
+    )
 }
 
-export default Home
+
+export default Hello
