@@ -1,11 +1,11 @@
 
-
 function About(){
     return ( 
      <div className="sm:flex items-center max-w-screen-xl">
   <div className="sm:w-1/2 p-10">
     <div className="image object-center text-center">
       <img src="https://i.imgur.com/WbQnbas.png" />
+
     </div>
   </div>
   <div className="sm:w-1/2 p-5">

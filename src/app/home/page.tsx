@@ -1,3 +1,5 @@
+"use client"
+import { signIn } from "next-auth/react"
 
 function Hello(){
     return (
@@ -16,9 +18,9 @@ function Hello(){
     <p className="text-white text-lg text-center mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
       sagittis lobortis sapien, eu tincidunt metus semper eget. Sed at malesuada arcu. Pellentesque habitant morbi
       tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-    <a href="#" className="text-lg bg-yellow-500 hover:bg-yellow-600 text-white py-4 px-6 rounded-lg font-bold shadow-md =">Get
+    <button onClick={()=>signIn("google")} className="text-lg bg-yellow-500 hover:bg-yellow-600 text-white py-4 px-6 rounded-lg font-bold shadow-md =">Get
       started
-    </a>
+    </button>
   </header>
 </div>
 
