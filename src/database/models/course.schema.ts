@@ -1,22 +1,51 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const courseSchema = new Schema({
-    courseName: {
-        type: String
+interface Icourse extends Document {
+    title: string,
+    description: string,
+    price: number,
+    duration: string
+    category: mongoose.Types.ObjectId,
+    lessons: mongoose.Types.ObjectId[],
+    createdAt: Date
+}
+
+const courseSchema = new Schema<Icourse>({
+    title: {
+        type: String,
+        required: true
     },
 
-    courseDescription: {
-        type: String
+    description: {
+        type: String,
+        required: true
     },
-    coursePrice: {
-        type: Number
+    price: {
+        type: Number,
+        required: true
     },
-    courseDuration: {
-        type: String
+    duration: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: "Category"
+    },
+    lessons: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Lesson"
+
+        }
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 
 })
 
-const Course = mongoose.model("Course", courseSchema)
+const Course = mongoose.models.Course || mongoose.model("Course", courseSchema)
 export default Course
