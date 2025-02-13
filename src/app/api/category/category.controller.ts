@@ -1,9 +1,12 @@
 
 import dbConnect from "@/database/connection"
 import Category from "@/database/models/category.schema"
+import authMiddleware from "../../../../middleware/auth.middleware"
+import { NextRequest } from "next/server"
 
 export async function createCategory(req: Request) {
     try {
+       authMiddleware(req as NextRequest)
         await dbConnect()
         const { name, description } = await req.json()
 
@@ -41,7 +44,7 @@ export async function getCategories() {
         return Response.json({
             message: "Category fetch successfully!",
             data: categories
-        }, { status: 201 }) 
+        }, { status: 201 })
     } catch (error) {
         console.log(error)
         return Response.json({

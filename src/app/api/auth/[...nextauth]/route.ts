@@ -1,9 +1,10 @@
 import dbConnect from "@/database/connection";
 import User from "@/database/models/user.schema";
-import { promises } from "dns";
-import NextAuth from "next-auth";
+import { Session } from "inspector/promises";
+import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google"
-const handler = NextAuth({
+
+export const authOptions: AuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -29,8 +30,14 @@ const handler = NextAuth({
                 console.log(error)
                 return false
             }
+        },
+       async session(session:Session, user:any){
+          const  data = await User.findById(user.id)
+            session.user.role = data.role  || "student"
+            return session
         }
     }
-})
+}
+const handler = NextAuth(authOptions)
 
 export {handler as GET, handler as POST}

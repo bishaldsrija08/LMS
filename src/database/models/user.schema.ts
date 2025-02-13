@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
-enum Role {
+export enum Role {
     Student = "student",
     Admin = "admin"
 }
