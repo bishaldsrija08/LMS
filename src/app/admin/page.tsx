@@ -1,9 +1,5 @@
-import Dashboard from "@/components/dashboard/Dashboard"
-
-function Admin(){
-    return(
-<Dashboard/>
-    )
+function Admin() {
+  return <h1>home page</h1>;
 }
 
-export default Admin
+export default Admin;
