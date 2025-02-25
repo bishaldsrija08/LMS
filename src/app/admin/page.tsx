@@ -1,5 +1,11 @@
-function Admin() {
-  return <h1>home page</h1>;
+import Dashboard from "@/components/dashboard/Dashboard";
+
+
+function Admin(){
+
+    return ( 
+        <h1>Home Page</h1>
+    )
 }
 
-export default Admin;
+export default Admin

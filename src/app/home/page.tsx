@@ -1,29 +1,27 @@
-"use client";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-
-function Hello() {
-  const { data: session } = useSession();
-  if (session) {
-    return (
+"use client"
+import {signIn, signOut, useSession} from "next-auth/react"
+import Image from "next/image"
+function Home(){
+   const {data:session} =  useSession() // useSelector() --> select * from users
+   if(session){
+    return(
       <>
-        <Image src={session.user?.image} alt="lamo" width={100} height={100} />
-        <h1>Welcome, {session.user?.name}</h1>
-        <h1>Your email is, {session.user?.email}</h1>
-        <button onClick={() => signOut()}>Sign Out</button>
+      <Image src={session.user?.image || "mero-profile.png"} alt="User Image" width={80} height={80} />
+      
+      <h1>Welcome, {session.user?.name}</h1>
+      <h3>{session.user?.email}</h3>
+      <button onClick={()=>signOut()} >Sign Out</button>
       </>
-    );
-  }
-  return (
-    <>
-      <button
-        onClick={() => signIn("google")}
-        className="text-lg bg-yellow-500 hover:bg-yellow-600 text-white py-4 px-6 rounded-lg font-bold shadow-md ="
-      >
-        Get started
-      </button>
-    </>
-  );
+    )
+   }
+    return (
+      <div>
+        <h1>Not Logged In </h1>
+        <button onClick={()=>signIn("google")}>Sign in With Google</button>
+      </div>
+
+    )
 }
 
-export default Hello;
+
+export default Home

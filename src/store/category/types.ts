@@ -1,17 +1,16 @@
 export enum Status{
     Loading = "loading",
-    Success = "success",
+    Success = "success", 
     Error = "error"
 }
-
 export interface ICategory{
-    _id:string,
-    description: string,
-    name: string,
-    createdAt: string
+    _id : string, 
+    description : string, 
+    name : string, 
+    createdAt : string
 }
 
 export interface ICategoryInitialState{
-    categories: ICategory[],
-    status: Status
+    categories : ICategory[], 
+    status : Status
 }
