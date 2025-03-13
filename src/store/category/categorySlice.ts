@@ -70,7 +70,6 @@ export function createCategory(data: { name: string, description: string }) {
     }
 }
 
-
 export function deleteCategory(id:string){
     return async function deleteCategoryThunk(dispatch:AppDispatch){
         try {
