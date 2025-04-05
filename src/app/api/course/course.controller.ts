@@ -72,7 +72,7 @@ export async function deleteCourse(id: string) {
         await dbConnect()
         await Course.findByIdAndDelete(id) //objeet return {}
         //deletee lessons too
-        await Lesson.deleteMany({course:id})
+        await Lesson.deleteMany({ course: id })
         return Response.json({
             message: "Course deleted",
         }, { status: 200 })

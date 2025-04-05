@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import Modal from "../components/modal/Modal";
 import { deleteCategory, fetchCategories } from "@/store/category/categorySlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import Category from "@/database/models/category.schema";
 
 function Categories() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,12 +11,13 @@ const [searchTerm, setSearchTerm] = useState<string>("")
   const { categories } = useAppSelector((store) => store.categories);
   const openModal = useCallback( () => setIsModalOpen(true), [])
   const closeModal = () => setIsModalOpen(false);
+  
   const deleteCat = (id:string)=>{
 if(id){
   dispatch(deleteCategory(id))
 }
   }
-  console.log(isModalOpen);
+  
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
